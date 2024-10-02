@@ -1,0 +1,68 @@
+{
+	// Place your global snippets here. Each snippet is defined under a snippet name and has a scope, prefix, body and 
+	// description. Add comma separated ids of the languages where the snippet is applicable in the scope field. If scope 
+	// is left empty or omitted, the snippet gets applied to all languages. The prefix is what is 
+	// used to trigger the snippet and the body will be expanded and inserted. Possible variables are: 
+	// $1, $2 for tab stops, $0 for the final cursor position, and ${1:label}, ${2:another} for placeholders. 
+	// Placeholders with the same ids are connected.
+	// Example:
+	"Print to console": {
+		"scope": "cpp",
+		"prefix": "big_int_subtraction",
+		"body": [
+			"string subtraction(string a, string b)",
+			"{",
+			"\tstring result = \"\";",
+			"\tif (a.length() > b.length())",
+			"\t\tswap(a, b);",
+			"\treverse(a.begin(), a.end());",
+			"\treverse(b.begin(), b.end());",
+			"\tint carry = 0;",
+			"\tint subtraction;",
+			"\tfor (int i = 0; i < a.length(); i++)",
+			"\t{",
+			"\t\tif (a.length() < i)",
+			"\t\t\ta[i] = (a[i] - '0') + carry + '0';",
+			"\t\tif ((b[i] - '0') < (a[i] - '0'))",
+			"\t\t{",
+			"\t\t\tb[i] = (b[i] - '0') + 10 + '0';",
+			"\t\t\tsubtraction = (b[i] - '0') - (a[i] - '0');",
+			"\t\t\tcarry = 1;",
+			"\t\t}",
+			"\t\telse",
+			"\t\t{",
+			"\t\t\tsubtraction = (b[i] - '0') - (a[i] - '0');",
+			"\t\t\tcarry = 0;",
+			"\t\t}",
+			"\t\tresult += (subtraction + '0');",
+			"\t}",
+			"\tfor (int i = a.length(); i < b.length(); i++)",
+			"\t{",
+			"\t\tif (carry == 0)",
+			"\t\t\tresult += b[i];",
+			"\t\telse",
+			"\t\t{",
+			"\t\t\tif (b[i] == '0')",
+			"\t\t{",
+			"\t\t\tsubtraction += '9';",
+			"\t\t\tresult += subtraction;",
+			"\t\t\tcarry = 1;",
+			"\t\t}",
+			"\t\telse",
+			"\t\t{",
+			"\t\t\tsubtraction = (b[i] - '0' - 1) + '0';",
+			"\t\t\tif (i == b.length() - 1 && subtraction == '0')",
+			"\t\t\t\tbreak;",
+			"\t\t\tresult += subtraction;",
+			"\t\t\tcarry = 0;",
+			"\t\t\t}",
+			"\t\t}",
+			"\t}",
+			"\treverse(result.begin(), result.end());",
+			"\tcout << result << endl;",
+			"\treturn result;",
+			"}",
+		],
+		"description": "BigInt Subtraction"
+	}
+}

@@ -1,0 +1,15 @@
+{
+	"cpp-comment-template": {
+		"prefix": "//", // The trigger character to activate the snippet
+		"body": [
+			"/**",
+			" *    author:  iamsabbir",
+			" *    created: ${1:Date}", 
+			" *    Contest: ${2:Info}", 
+			// Uses a placeholder for formatted date
+			" **/",
+			""
+		],
+		"description": "Comment template for C++ files"
+	}
+}
