@@ -1,0 +1,37 @@
+{
+	// Place your global snippets here. Each snippet is defined under a snippet name and has a scope, prefix, body and 
+	// description. Add comma separated ids of the languages where the snippet is applicable in the scope field. If scope 
+	// is left empty or omitted, the snippet gets applied to all languages. The prefix is what is 
+	// used to trigger the snippet and the body will be expanded and inserted. Possible variables are: 
+	// $1, $2 for tab stops, $0 for the final cursor position, and ${1:label}, ${2:another} for placeholders. 
+	// Placeholders with the same ids are connected.
+	// Example:
+	"Print to console": {
+		"scope": "cpp",
+		"prefix": "subarray_prefix",
+		"body": [
+			"vector<int> CalculateSubArraySum(vector<int> a)",
+			"{",
+			"\tvector<int> preSum(a.size(),0);",
+			"\tvector<int> SubArraySum;",
+			"\tpreSum[0] = a[0];",
+			"\tfor(int i=1;i<a.size();i++)",
+			"\t\tpreSum[i] = preSum[i-1] + a[i];",
+			"\tfor(int i=0;i<a.size();i++)",
+			"\t{",
+			"\t\tfor(int j=i;j<a.size();j++)",
+			"\t\t{",
+			"\t\t\tint num;",
+			"\t\t\tif(i!=j)",
+			"\t\t\t\tnum = preSum[j] - preSum[i];",
+			"\t\t\telse",
+			"\t\t\t\tnum =  preSum[j];",
+			"\t\t\tSubArraySum.push_back(num);",
+			"\t\t}",
+			"\t}",
+			"\treturn SubArraySum;",
+			"}"
+		],
+		"description": "Log output to console"
+	}
+}

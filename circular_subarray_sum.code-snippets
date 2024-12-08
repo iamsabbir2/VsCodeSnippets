@@ -1,0 +1,40 @@
+{
+	// Place your global snippets here. Each snippet is defined under a snippet name and has a scope, prefix, body and 
+	// description. Add comma separated ids of the languages where the snippet is applicable in the scope field. If scope 
+	// is left empty or omitted, the snippet gets applied to all languages. The prefix is what is 
+	// used to trigger the snippet and the body will be expanded and inserted. Possible variables are: 
+	// $1, $2 for tab stops, $0 for the final cursor position, and ${1:label}, ${2:another} for placeholders. 
+	// Placeholders with the same ids are connected.
+	// Example:
+	"Print to console": {
+		"scope": "cpp",
+		"prefix": "circular_subarray_sum",
+		"body": [
+			"int circularSubarraySum(vector<int> &arr)",
+			"{",
+			"\tint n = arr.size();",
+			"\tint suffixSum = arr[n - 1];",
+			"\tvector<int> maxSuffix(n + 1, 0);",
+			"\tmaxSuffix[n - 1] = arr[n - 1];",
+			"\tfor (int i = n - 2; i >= 0; i--)",
+			"\t{",
+			"\t\tsuffixSum = suffixSum + arr[i];",
+			"\t\tmaxSuffix[i] = max(maxSuffix[i + 1], suffixSum);",
+			"\t}",
+			"\tint circularSum = arr[0];",
+			"\tint normalSum = arr[0];",
+			"\tint currSum = 0;",
+			"\tint prefix = 0;",
+			"\tfor (int i = 0; i < n; i++)",
+			"\t{",
+			"\t\tcurrSum = max(currSum + arr[i], arr[i]);",
+			"\t\tnormalSum = max(normalSum, currSum);",
+			"\t\tprefix = prefix + arr[i];",
+			"\t\tcircularSum = max(circularSum, prefix + maxSuffix[i + 1]);",
+			"\t}",
+			"\treturn max(circularSum, normalSum);",
+			"}"
+		],
+		"description": "Log output to console"
+	}
+}

@@ -1,0 +1,67 @@
+{
+	// Place your global snippets here. Each snippet is defined under a snippet name and has a scope, prefix, body and 
+	// description. Add comma separated ids of the languages where the snippet is applicable in the scope field. If scope 
+	// is left empty or omitted, the snippet gets applied to all languages. The prefix is what is 
+	// used to trigger the snippet and the body will be expanded and inserted. Possible variables are: 
+	// $1, $2 for tab stops, $0 for the final cursor position, and ${1:label}, ${2:another} for placeholders. 
+	// Placeholders with the same ids are connected.
+	// Example:
+	"Print to console": {
+		"scope": "cpp",
+		"prefix": "matrixExponentiation",
+		"body": [
+			"typedef vector<vector<long long>> Matrix;",
+			"Matrix multiply(Matrix &A, Matrix &B, int k)",
+			"{",
+			"\tMatrix C(k, vector<long long>(k, 0));",
+			"\tfor (int i = 0; i < k; i++)",
+			"\t{",
+			"\t\tfor (int j = 0; j < k; j++)",
+			"\t\t{",
+			"\t\t\tfor (int l = 0; l < k; l++)",
+			"\t\t\t{",
+			"\t\t\t\tC[i][j] = (C[i][j] + A[i][l] * B[l][j]) % MOD;",
+			"\t\t\t}",
+			"\t\t}",
+			"\t}",
+			"\treturn C;",
+			"}",
+			"Matrix powerMatrix(Matrix A, int p, int k)",
+			"{",
+			"\tMatrix result(k, vector<long long>(k, 0));",
+			"\tfor (int i = 0; i < k; i++)",
+			"\t{",
+			"\t\tresult[i][i] = 1;",
+			"\t}",
+			"\twhile (p)",
+			"\t{",
+			"\t\tif (p & 1)",
+			"\t\t{",
+			"\t\t\tresult = multiply(result, A, k);",
+			"\t\t}",
+			"\t\tA = multiply(A, A, k);",
+			"\t\tp >>= 1;",
+			"\t}",
+			"\treturn result;",
+			"}",
+			"long long solve(int k, vector<long long> &b, vector<long long> &c, int n)",
+			"{",
+			"\tif (n <= k)",
+			"\t\treturn b[n - 1] % MOD;",
+			"\tMatrix T(k, vector<long long>(k, 0));",
+			"\tfor (int i = 0; i < k; i++)",
+			"\t\tT[0][i] = c[i];",
+			"\tfor (int i = 1; i < k; i++)",
+			"\t\tT[i][i - 1] = 1;",
+			"\tT = powerMatrix(T, n - k, k);",
+			"\tlong long result = 0;",
+			"\tfor (int i = 0; i < k; i++)",
+			"\t{",
+			"\tresult = (result + T[0][i] * b[k - i - 1]) % MOD;",
+			"\t}",
+			"\treturn result;",
+			"}",
+		],
+		"description": "Log output to console"
+	}
+}
