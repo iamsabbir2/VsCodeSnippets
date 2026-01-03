@@ -6,31 +6,15 @@
 	// $1, $2 for tab stops, $0 for the final cursor position, and ${1:label}, ${2:another} for placeholders.
 	// Placeholders with the same ids are connected.
 	// Example:
-	"CPP Snippet": {
+	"Print to console": {
 		"scope": "cpp",
-		"prefix": "cp_cpp",
+		"prefix": "pick_random_int",
 		"body": [
-			"// ${CURRENT_YEAR}/${CURRENT_MONTH}/${CURRENT_DATE} ${CURRENT_HOUR}:${CURRENT_MINUTE}:${CURRENT_SECOND}\n",
-			"#include <bits/stdc++.h>",
-			"using namespace std;",
-			"#define ll long long",
-			"#define endl '\\n'",
-			"void soln()",
+			"int pick_random_value(int min, int max)",
 			"{",
-			"\t$1",
+			"\treturn rand() % (max - min + 1) + min;",
 			"}",
-			"\n",
-			"int main(){",
-			"\tios_base::sync_with_stdio(false);",
-			"\tcin.tie(0);",
-			"\tcout.tie(0);\n",
-			"\tint t;",
-			"\tcin >> t;",
-			"\twhile(t--)",
-			"\t\tsoln();",
-			"\treturn 0;",
-			"}"
 		],
-		"description": "Log output to console"
+		"description": "Random Integer Picker"
 	}
 }

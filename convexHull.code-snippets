@@ -6,30 +6,27 @@
 	// $1, $2 for tab stops, $0 for the final cursor position, and ${1:label}, ${2:another} for placeholders.
 	// Placeholders with the same ids are connected.
 	// Example:
-	"CPP Snippet": {
+	"Print to console": {
 		"scope": "cpp",
-		"prefix": "cp_cpp",
+		"prefix": "convexHull",
 		"body": [
-			"// ${CURRENT_YEAR}/${CURRENT_MONTH}/${CURRENT_DATE} ${CURRENT_HOUR}:${CURRENT_MINUTE}:${CURRENT_SECOND}\n",
-			"#include <bits/stdc++.h>",
-			"using namespace std;",
-			"#define ll long long",
-			"#define endl '\\n'",
-			"void soln()",
+			"int crossProduct(const pair<int, int> &p1, const pair<int, int> &p2, const pair<int, int> &p3)",
 			"{",
-			"\t$1",
-			"}",
-			"\n",
-			"int main(){",
-			"\tios_base::sync_with_stdio(false);",
-			"\tcin.tie(0);",
-			"\tcout.tie(0);\n",
-			"\tint t;",
-			"\tcin >> t;",
-			"\twhile(t--)",
-			"\t\tsoln();",
-			"\treturn 0;",
-			"}"
+			"\treturn (p2.first - p1.first) * (p3.second - p1.second) - (p2.second - p1.second) * (p3.first - p1.first);",
+			"}\n",
+			"vector<pair<int, int>> convexHull(vector<pair<int, int>> &points)",
+			"{",
+			"\tvector<pair<int, int>> hull;",
+			"\tfor (const auto &p : points)",
+			"\t{",
+			"\t\twhile (hull.size() > 1 && crossProduct(hull[hull.size() - 2], hull.back(), p) <= 0)",
+			"\t\t{",
+			"\t\t\thull.pop_back();",
+			"\t\t}",
+			"\t\thull.push_back(p);",
+			"\t}",
+			"\treturn hull;",
+			"}\n",
 		],
 		"description": "Log output to console"
 	}

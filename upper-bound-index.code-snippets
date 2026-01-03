@@ -6,30 +6,24 @@
 	// $1, $2 for tab stops, $0 for the final cursor position, and ${1:label}, ${2:another} for placeholders.
 	// Placeholders with the same ids are connected.
 	// Example:
-	"CPP Snippet": {
+	"Print to console": {
 		"scope": "cpp",
-		"prefix": "cp_cpp",
+		"prefix": "upper-bound-index",
 		"body": [
-			"// ${CURRENT_YEAR}/${CURRENT_MONTH}/${CURRENT_DATE} ${CURRENT_HOUR}:${CURRENT_MINUTE}:${CURRENT_SECOND}\n",
-			"#include <bits/stdc++.h>",
-			"using namespace std;",
-			"#define ll long long",
-			"#define endl '\\n'",
-			"void soln()",
+			"int upper_bound_index(vector<int> &arr, int search_key)",
 			"{",
-			"\t$1",
+			"\tint i = 0;",
+			"\tint j = arr.size() - 1;",
+			"\twhile (i < j)",
+			"\t{",
+			"\t\tint mid = i + (j - i) / 2;",
+			"\t\tif (arr[mid] <= search_key)",
+			"\t\t\ti = mid + 1;",
+			"\t\telse",
+			"\t\t\tj = mid;",
+			"\t}",
+			"\treturn i;",
 			"}",
-			"\n",
-			"int main(){",
-			"\tios_base::sync_with_stdio(false);",
-			"\tcin.tie(0);",
-			"\tcout.tie(0);\n",
-			"\tint t;",
-			"\tcin >> t;",
-			"\twhile(t--)",
-			"\t\tsoln();",
-			"\treturn 0;",
-			"}"
 		],
 		"description": "Log output to console"
 	}
